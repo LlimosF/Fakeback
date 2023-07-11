@@ -1,62 +1,62 @@
 <?php
 
-require_once("composants/header.php");
+  require_once("composants/header.php");
 
-if (!empty($_POST["lastname"]) && !empty($_POST["firstname"]) && !empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["confirm_password"]) && !empty($_POST["birthday"]) && !empty($_POST["country"]) && !empty($_POST["city"])) {
+  if (!empty($_POST["lastname"]) && !empty($_POST["firstname"]) && !empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["confirm_password"]) && !empty($_POST["birthday"]) && !empty($_POST["country"]) && !empty($_POST["city"])) {
 
-  require_once("composants/database.php");
+    require_once("composants/database.php");
 
-  $lastname = strip_tags($_POST["lastname"]);
-  $firstname = strip_tags($_POST["firstname"]);
-  $email = strip_tags($_POST["email"]);
-  $password = strip_tags($_POST["password"]);
-  $confirm_password = strip_tags($_POST["confirm_password"]);
-  $birthday = strip_tags($_POST["birthday"]);
-  $country = strip_tags($_POST["country"]);
-  $city = strip_tags($_POST["city"]);
+    $lastname = strip_tags($_POST["lastname"]);
+    $firstname = strip_tags($_POST["firstname"]);
+    $email = strip_tags($_POST["email"]);
+    $password = strip_tags($_POST["password"]);
+    $confirm_password = strip_tags($_POST["confirm_password"]);
+    $birthday = strip_tags($_POST["birthday"]);
+    $country = strip_tags($_POST["country"]);
+    $city = strip_tags($_POST["city"]);
 
-  if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-    if ($password == $confirm_password) {
+      if ($password == $confirm_password) {
 
-      $check_email = "SELECT COUNT(*) AS count FROM users WHERE email = :email";
-      $query_check = $db->prepare($check_email);
-      $query_check->bindValue(":email", $email, PDO::PARAM_STR);
-      $query_check->execute();
-      $result = $query_check->fetch(PDO::FETCH_ASSOC);
+        $check_email = "SELECT COUNT(*) AS count FROM users WHERE email = :email";
+        $query_check = $db->prepare($check_email);
+        $query_check->bindValue(":email", $email, PDO::PARAM_STR);
+        $query_check->execute();
+        $result = $query_check->fetch(PDO::FETCH_ASSOC);
 
-      if ($result['count'] == 0) {
+        if ($result['count'] == 0) {
 
-        $password = password_hash($_POST["password"], PASSWORD_ARGON2ID);
+          $password = password_hash($_POST["password"], PASSWORD_ARGON2ID);
 
-        $create_account = "INSERT INTO users(`lastname`, `firstname`, `email`, `password`, `birthday`, `country`, `city`) VALUES (:lastname, :firstname, :email, :password, :birthday, :country, :city)";
-        $query = $db->prepare($create_account);
+          $create_account = "INSERT INTO users(`lastname`, `firstname`, `email`, `password`, `birthday`, `country`, `city`) VALUES (:lastname, :firstname, :email, :password, :birthday, :country, :city)";
+          $query = $db->prepare($create_account);
 
-        $query->bindValue(":lastname", $lastname, PDO::PARAM_STR);
-        $query->bindValue(":firstname", $firstname, PDO::PARAM_STR);
-        $query->bindValue(":email", $email, PDO::PARAM_STR);
-        $query->bindValue(":password", $password, PDO::PARAM_STR);
-        $query->bindValue(":birthday", $birthday, PDO::PARAM_STR);
-        $query->bindValue(":country", $country, PDO::PARAM_STR);
-        $query->bindValue(":city", $city, PDO::PARAM_STR);
+          $query->bindValue(":lastname", $lastname, PDO::PARAM_STR);
+          $query->bindValue(":firstname", $firstname, PDO::PARAM_STR);
+          $query->bindValue(":email", $email, PDO::PARAM_STR);
+          $query->bindValue(":password", $password, PDO::PARAM_STR);
+          $query->bindValue(":birthday", $birthday, PDO::PARAM_STR);
+          $query->bindValue(":country", $country, PDO::PARAM_STR);
+          $query->bindValue(":city", $city, PDO::PARAM_STR);
 
-        $query->execute();
+          $query->execute();
+
+        } else {
+
+          echo "<h2 class='error'>Cette adresse e-mail est déjà utilisée.</h2>";
+
+        }
 
       } else {
 
-        echo "<h2 class='error'>Cette adresse e-mail est déjà utilisée.</h2>";
+        echo "<h2 class='error'>Les mots de passe ne sont pas identique</h2>";
 
       }
 
-    } else {
+    } 
 
-      echo "<h2 class='error'>Les mots de passe ne sont pas identique</h2>";
-
-    }
-
-  } 
-
-}
+  }
 
 ?>
 
@@ -67,28 +67,28 @@ if (!empty($_POST["lastname"]) && !empty($_POST["firstname"]) && !empty($_POST["
   </div>
   <form method="POST" class="form-account">
     <div class="bloc-form">
-      <input type="text" name="firstname" placeholder="Nom de famille *" required>
+      <input type="text" name="firstname" placeholder="Nom de famille" required>
     </div>
     <div class="bloc-form">
-      <input type="text" name="lastname" placeholder="Prénom *" required>
+      <input type="text" name="lastname" placeholder="Prénom" required>
     </div>
     <div class="bloc-form">
-      <input type="email" name="email" placeholder="Votre adresse e-mail *" required>
+      <input type="email" name="email" placeholder="Votre adresse e-mail" required>
     </div>
     <div class="bloc-form">
-      <input type="password" name="password" placeholder="Mot de passe *">
+      <input type="password" name="password" placeholder="Mot de passe">
     </div>
     <div class="bloc-form">
-      <input type="password" name="confirm_password" placeholder="Confirmer mot de passe *" required>
+      <input type="password" name="confirm_password" placeholder="Confirmer mot de passe" required>
     </div>
     <div class="bloc-form">
-      <input type="date" name="birthday" placeholder="Date de naissance *" required>
+      <input type="date" name="birthday" placeholder="Date de naissance" required>
     </div>
     <div class="bloc-form">
-      <input type="text" name="country" placeholder="Pays de résidence *" required>
+      <input type="text" name="country" placeholder="Pays de résidence" required>
     </div>
     <div class="bloc-form">
-      <input type="text" name="city" placeholder="Ville de résidence *" required>
+      <input type="text" name="city" placeholder="Ville de résidence" required>
     </div>
     <div class="bloc-form">
       <button type="submit" name="submit" class="btn-create">Créer mon compte</button>

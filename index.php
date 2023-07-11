@@ -1,49 +1,49 @@
 <?php
 
-require_once("composants/header.php");
+    require_once("composants/header.php");
 
-if (!empty($_POST)) {
+    if (!empty($_POST)) {
 
-    if (isset($_POST["email"], $_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["password"])) {
+        if (isset($_POST["email"], $_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["password"])) {
 
-        if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-            echo "<h2 class='error'>Ce n'est pas une adresse e-mail valide</h2>";
-        }
+            if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+                echo "<h2 class='error'>Ce n'est pas une adresse e-mail valide</h2>";
+            }
 
-        require_once("composants/database.php");
+            require_once("composants/database.php");
 
-        $sql = "SELECT * FROM users WHERE email = :email";
+            $sql = "SELECT * FROM users WHERE email = :email";
 
-        $query = $db->prepare($sql);
+            $query = $db->prepare($sql);
 
-        $query->bindValue(":email", $_POST["email"], PDO::PARAM_STR);
-        $query->execute();
+            $query->bindValue(":email", $_POST["email"], PDO::PARAM_STR);
+            $query->execute();
 
-        $user = $query->fetch();
+            $user = $query->fetch();
 
-        if (!$user) {
-            echo "<h2 class='error'>Erreur lors de la tentative de connexion</h2>";
-        } else {
-            if (!password_verify($_POST["password"], $user["password"])) {
-                echo "<h2 class='error'>L'adresse e-mail et/ou le mot de passe sont incorrects</h2>";
+            if (!$user) {
+                echo "<h2 class='error'>Erreur lors de la tentative de connexion</h2>";
             } else {
-                session_start();
+                if (!password_verify($_POST["password"], $user["password"])) {
+                    echo "<h2 class='error'>L'adresse e-mail et/ou le mot de passe sont incorrects</h2>";
+                } else {
+                    session_start();
 
-                $_SESSION = [
-                    "lastname" => $user["lastname"],
-                    "firstname" => $user["firstname"],
-                    "email" => $user["email"],
-                    "birthday" => $user["birthday"],
-                    "country" => $user["country"],
-                    "city" => $user["city"]
-                ];
+                    $_SESSION = [
+                        "lastname" => $user["lastname"],
+                        "firstname" => $user["firstname"],
+                        "email" => $user["email"],
+                        "birthday" => $user["birthday"],
+                        "country" => $user["country"],
+                        "city" => $user["city"]
+                    ];
 
-                header("Location: fil-actualite.php");
-                exit();
+                    header("Location: fil-actualite.php");
+                    exit();
+                }
             }
         }
     }
-}
 
 ?>
 
@@ -54,10 +54,10 @@ if (!empty($_POST)) {
     </div>
     <form method="POST" class="form-account">
         <div class="bloc-form">
-            <input type="email" name="email" required>
+            <input type="email" name="email" placeholder="Adresse e-mail" required>
         </div>
         <div class="bloc-form">
-            <input type="password" name="password" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
         </div>
         <div class="bloc-form">
             <button type="submit" class="btn-login">Connexion</button>

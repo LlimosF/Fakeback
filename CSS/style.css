@@ -6,13 +6,110 @@
   font-family: 'Belanosima', sans-serif;
 }
 
+body {
+  background: #e8e8e8;
+}
+
 .title {
   color: blue;
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.container {
+  margin: 0;
+  padding: 15px;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.884);
+  padding: 15px;
+}
+
+.burgerLogo {
+  width: 20px;
+}
+
+li {
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo {
+  margin-right: 50px;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+#toggler, .navbar label {
+  display: none;
+}
+
+.social-link {
+  justify-self: center;
+}
+
+@media screen and (max-width: 900px) {
+  .menu {
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+  }
+
+  .list {
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+  }
+
+  .navbar label {
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+  }
+  
+  #toggler:checked ~ .menu {
+      max-height: 100%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .LinkNav {
+    font-size: 15px;
+  }
+}
+
 .container-index {
   display: grid;
-}
+  justify-items: center;
+  align-self: center;
+  text-align: center;
+  margin-top: 50px;
+}  
 
 .form-account {
   width: 80%;
@@ -98,6 +195,7 @@
     grid-template-rows: [a] 1fr [b] 1fr [c];
     height: 100vh;
     width: 100%;
+    margin-top: 0;
   }
 
   .index {
@@ -114,3 +212,66 @@
     align-self: center;
   }
 }
+
+/* LIST ACCOUNT */
+/* LIST ACCOUNT */
+/* LIST ACCOUNT */
+
+.show-account {
+  max-height: 1000px;
+  display: flex;
+  overflow-x: scroll;
+  margin-top: 120px;
+}
+
+.account {
+  display: grid;
+  grid-template-rows: [a] 1fr [b] 1fr [c] 1fr [d];
+  width: 500px;
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #fff;
+}
+
+.account:hover {
+  box-shadow: -6px -6px 12px #c5c5c5, 6px 6px 12px #fff;
+}
+
+.name-account {
+  padding: 10px;
+}
+
+.logo-account {
+  width: 40px;
+  justify-self: center;
+}
+
+@media screen and (min-width: 1500px) {
+  .show-account {
+    display: flex;
+    position: fixed;
+    right: 0;
+    width: 260px;
+    overflow-y: scroll;
+    height: 100%;
+    flex-direction: column;
+    margin-top: 100px;
+    height: 90%;
+  }
+
+  .account {
+    width: 120px;
+  }
+}
+
+/* FIL D'ACTUALITE */
+/* FIL D'ACTUALITE */
+/* FIL D'ACTUALITE */
