@@ -2,7 +2,7 @@
 
   require_once("database.php");
 
-  $sql = "SELECT * FROM publications";
+  $sql = "SELECT * FROM publication";
   $query = $db->prepare($sql);
   $query->execute();
   $publications = $query->fetchAll();
@@ -17,7 +17,7 @@
 
   ?>
 
-  <div>
+  <div class="publication">
 
   </div>
 

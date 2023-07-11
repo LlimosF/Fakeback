@@ -45,6 +45,10 @@ h1 {
   width: 20px;
 }
 
+.logo {
+  width: 20px;
+}
+
 li {
   color: rgb(255, 255, 255);
   text-transform: uppercase;
@@ -166,8 +170,15 @@ li {
 }
 
 .error {
+  padding: 120px 30px 30px 30px;
   text-align: center;
   color: red;
+}
+
+.success {
+  padding: 120px 30px 30px 30px;
+  text-align: center;
+  color: green;
 }
 
 .text {
@@ -275,3 +286,36 @@ li {
 /* FIL D'ACTUALITE */
 /* FIL D'ACTUALITE */
 /* FIL D'ACTUALITE */
+
+
+/* PUBLICATION */
+/* PUBLICATION */
+/* PUBLICATION */
+
+.form-publication {
+  margin-top: 120px;
+  width: 80%;
+  margin-left: 5%;
+  display: grid;
+  justify-items: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  border: 0,1px solid black;
+  padding: 20px;
+  justify-self: center;
+}
+
+textarea {
+  width: 90%;
+  margin-top: 5px;
+  font-size: 16px;
+  padding: 5px;
+}
+
+@media screen and (min-width: 500px) {
+  .form-publication {
+    width: 460px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
