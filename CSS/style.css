@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Belanosima', sans-serif;
+}
+
+.title {
+  color: blue;
+}
+
+.container-index {
+  display: grid;
+}
+
+.form-account {
+  width: 80%;
+  margin-top: 50px;
+  display: grid;
+  justify-items: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  border: 0,1px solid black;
+  padding: 20px;
+  justify-self: center;
+}
+
+.bloc-form {
+  width: 100%;
+  margin: 0;
+  display: grid;
+  justify-items: center;
+}
+
+.bloc-form > input {
+  padding: 5px;
+  margin-top: 5px;
+  width: 90%;
+  font-size: 16px;
+}
+
+.btn-login {
+  width: 93%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(18, 118, 148);
+  color: white;
+  text-transform: uppercase;
+}
+
+.btn-create {
+  width: 93%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(18, 148, 24);
+  color: white;
+  text-transform: uppercase;
+}
+
+.separator {
+  width: 90%;
+  justify-self: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.error {
+  text-align: center;
+  color: red;
+}
+
+.text {
+  color: black;
+}
+
+/* MEDIA SCREEN */
+/* MEDIA SCREEN */
+/* MEDIA SCREEN */
+
+@media screen and (min-width: 500px) {
+  .form-account {
+    width: 460px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  html {
+    height: 100%;
+    width: 100%;
+  }
+
+  .container-index {
+    grid-template-columns: [a] 1fr [b] 1fr [c];
+    grid-template-rows: [a] 1fr [b] 1fr [c];
+    height: 100vh;
+    width: 100%;
+  }
+
+  .index {
+    grid-row: a / c;
+    grid-column: a / b;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .form-account {
+    grid-row: a / c;
+    grid-column: b / c;
+    justify-self: center;
+    align-self: center;
+  }
+}
