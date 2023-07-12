@@ -1,11 +1,11 @@
 <?php
 
-$userdb = "root";
-$passworddb = "";
+$userdb = "fakeback_db";
+$passworddb = "Titine19!";
 
 try {
 
-  $db = new PDO('mysql:host=localhost;dbname=fakeback', $userdb, $passworddb);
+  $db = new PDO('mysql:host=mysql-fakeback.alwaysdata.net;dbname=fakeback_database', $userdb, $passworddb);
 
 } catch (PDOException $e) {
 

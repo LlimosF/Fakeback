@@ -7,7 +7,9 @@
         if (isset($_POST["email"], $_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["password"])) {
 
             if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+
                 echo "<h2 class='error'>Ce n'est pas une adresse e-mail valide</h2>";
+
             }
 
             require_once("composants/database.php");
@@ -22,17 +24,25 @@
             $user = $query->fetch();
 
             if (!$user) {
+
                 echo "<h2 class='error'>Erreur lors de la tentative de connexion</h2>";
+
             } else {
+
                 if (!password_verify($_POST["password"], $user["password"])) {
+
                     echo "<h2 class='error'>L'adresse e-mail et/ou le mot de passe sont incorrects</h2>";
+
                 } else {
+
                     session_start();
 
                     $_SESSION = [
+                        "id" => $user["id"],
                         "lastname" => $user["lastname"],
                         "firstname" => $user["firstname"],
                         "email" => $user["email"],
+                        "password" => $user["password"],
                         "birthday" => $user["birthday"],
                         "country" => $user["country"],
                         "city" => $user["city"]

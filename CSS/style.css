@@ -14,6 +14,10 @@ body {
   color: blue;
 }
 
+.red {
+  color: red;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -146,9 +150,17 @@ li {
   margin-top: 5px;
   border-radius: 4px;
   border: none;
-  background-color: rgb(18, 118, 148);
+  background-color: rgb(0, 0, 0);
   color: white;
   text-transform: uppercase;
+  transition: 500ms;
+}
+
+.btn-login:hover {
+  background-color: white;
+  color: black;
+  transition: 500ms;
+  border: 1px solid black;
 }
 
 .btn-create {
@@ -157,9 +169,16 @@ li {
   margin-top: 5px;
   border-radius: 4px;
   border: none;
-  background-color: rgb(18, 148, 24);
+  background-color: rgb(121, 121, 121);
   color: white;
   text-transform: uppercase;
+}
+
+.btn-create:hover {
+  background-color: white;
+  color: rgb(121, 121, 121);
+  transition: 500ms;
+  border: 1px solid rgb(121, 121, 121);
 }
 
 .separator {
@@ -170,13 +189,13 @@ li {
 }
 
 .error {
-  padding: 120px 30px 30px 30px;
+  padding: 80px 30px 30px 30px;
   text-align: center;
   color: red;
 }
 
 .success {
-  padding: 120px 30px 30px 30px;
+  padding: 80px 30px 30px 30px;
   text-align: center;
   color: green;
 }
@@ -204,7 +223,7 @@ li {
   .container-index {
     grid-template-columns: [a] 1fr [b] 1fr [c];
     grid-template-rows: [a] 1fr [b] 1fr [c];
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     margin-top: 0;
   }
@@ -229,16 +248,15 @@ li {
 /* LIST ACCOUNT */
 
 .show-account {
-  max-height: 1000px;
   display: flex;
   overflow-x: scroll;
-  margin-top: 120px;
+  margin-top: 60px;
+  background: #e8e8e8;
+  z-index: 2;
 }
 
 .account {
   display: grid;
-  grid-template-rows: [a] 1fr [b] 1fr [c] 1fr [d];
-  width: 500px;
   text-align: center;
   margin: 20px;
   padding: 10px;
@@ -265,7 +283,7 @@ li {
   justify-self: center;
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1000px) {
   .show-account {
     display: flex;
     position: fixed;
@@ -273,8 +291,8 @@ li {
     width: 260px;
     overflow-y: scroll;
     height: 100%;
+    margin-top: 0;
     flex-direction: column;
-    margin-top: 100px;
     height: 90%;
   }
 
@@ -283,9 +301,89 @@ li {
   }
 }
 
+.link-profil {
+  color: black;
+  text-decoration: none;
+}
+
 /* FIL D'ACTUALITE */
 /* FIL D'ACTUALITE */
 /* FIL D'ACTUALITE */
+
+
+.container-publication {
+  margin-top: 20px;
+  width: 80%;
+  margin-left: 10%;
+  padding-bottom: 50px;
+}
+
+.content-publication {
+  width: 90%;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 0px 0px 15px black;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.title-publication {
+  padding: 10px;
+}
+
+.text-publication {
+  padding: 10px;
+}
+
+.bottom-publication {
+  display: grid;
+  grid-template-columns: [a] 1fr [b] 1fr [c];
+}
+
+.heart {
+  width: 20px;
+  justify-self: end;
+}
+
+.author {
+  padding: 10px;
+  justify-self: start;
+}
+
+.box {
+  padding-top: 20px;
+}
+
+.form-comment {
+  width: 90%;
+  border: 1px solid black;
+  margin: 0;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  justify-items: center;
+}
+
+@media screen and (min-width: 1000px) {
+  .container-publication {
+    margin-top: 100px;
+    width: 70%;
+    margin-left: 5%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container-publication {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .container-publication {
+    margin-left: 15%;
+  }
+}
 
 
 /* PUBLICATION */
@@ -317,5 +415,125 @@ textarea {
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* DETAILS ACCOUNT */
+/* DETAILS ACCOUNT */
+/* DETAILS ACCOUNT */
+
+.account-info {
+  width: 80%;
+  margin-left: 10%;
+  display: grid;
+  justify-items: center;
+  margin-top: 120px;
+  border-radius: 15px;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.ul-account > li {
+  color: black;
+  text-align: center;
+  list-style: none;
+  padding: 5px;
+}
+
+.account-img {
+  margin: 10px;
+  width: 30%;
+}
+
+.separator-account {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+@media screen and (min-width: 500px) {
+  .account-info {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .account-img {
+    width: 150px;
+  }
+
+  .ul-account > li {
+    font-size: 18px;
+  }
+}
+
+/* PAGE PERSONNEL */
+/* PAGE PERSONNEL */
+/* PAGE PERSONNEL */
+
+.container-private {
+  display: grid;
+  grid-template-rows: [a] 1fr [b] 1fr [c];
+  grid-template-columns: [a] 1fr [b] 1fr [c];
+  justify-items: center;
+}
+
+.form-private {
+  width: 80%;
+  margin-top: 50px;
+  display: grid;
+  justify-items: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  border: 0,1px solid black;
+  padding: 20px;
+  justify-self: center;
+  grid-row: b / c;
+  grid-column: a / c;
+}
+
+.account-info-private {
+  width: 80%;
+  margin-left: 10%;
+  display: grid;
+  justify-items: center;
+  margin-top: 120px;
+  border-radius: 15px;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  grid-row: a / b;
+  grid-column: a / c;
+  justify-self: center;
+}
+
+@media screen and (min-width: 500px) {
+  .form-private {
+    width: 460px;
+  }
+  
+  .account-info-private {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .form-private {
+    grid-row: a / c;
+    grid-column: b / c;    
+    justify-self: center;
+    align-self: center;
+  }
+
+  .account-info-private {
+    grid-row: a / c;
+    grid-column: a / b;
+    justify-self: center;
+    align-self: center;
   }
 }

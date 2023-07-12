@@ -42,6 +42,10 @@
 
           $query->execute();
 
+          if($query->execute()){
+            echo "<h2 class='success'>Votre compte a bien été créé !</h2>";
+          }
+
         } else {
 
           echo "<h2 class='error'>Cette adresse e-mail est déjà utilisée.</h2>";
