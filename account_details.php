@@ -2,6 +2,7 @@
   require_once("composants/database.php");
   require_once("composants/header.php");
   require_once("header-connected.php");
+  require_once("composants/user-connected.php");
 
   // Récupérer l'ID du compte depuis l'URL
   $account_id = $_GET["id"];

@@ -2,6 +2,8 @@
 
   require_once("composants/database.php");
 
+  require_once("composants/user-connected.php");
+  
   require_once("composants/header.php");
 
   $sql = "SELECT * FROM users";

@@ -1,6 +1,6 @@
 <?php
 
-  require_once("composants/header.php");
+require_once("composants/header.php");
 
   if (!empty($_POST["lastname"]) && !empty($_POST["firstname"]) && !empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["confirm_password"]) && !empty($_POST["birthday"]) && !empty($_POST["country"]) && !empty($_POST["city"])) {
 

@@ -27,8 +27,11 @@ if(!empty($_POST["lastname"]) && !empty($_POST["firstname"]) && !empty($_POST["e
 
   if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 
-    $sql = "UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, birthday = :birthday, country = :country";
+    $sql = "UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, birthday = :birthday, country = :country, city = :city WHERE id = :id";
+
     $query = $db->prepare($sql);
+
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
     $query->bindValue(":lastname", $lastname, PDO::PARAM_STR);
     $query->bindValue(":firstname", $firstname, PDO::PARAM_STR);
     $query->bindValue(":email", $email, PDO::PARAM_STR);
@@ -52,9 +55,9 @@ if(!empty($_POST["lastname"]) && !empty($_POST["firstname"]) && !empty($_POST["e
 
     echo "<h2 class='error'>Une erreur est survenue lors de la modification de votre profil</h2>";
 
-  }
+  } 
 
-} 
+}
 
 ?>
 
@@ -75,7 +78,6 @@ if(!empty($_POST["lastname"]) && !empty($_POST["firstname"]) && !empty($_POST["e
     </ul>
   </div>
   <form method="POST" class="form-private">
-    <h3>NE FONCTIONNE PAS !</h3>
     <div class="bloc-form">
       <input type="text" name="lastname" value="<?= $lastname ?>">
     </div>
@@ -83,16 +85,16 @@ if(!empty($_POST["lastname"]) && !empty($_POST["firstname"]) && !empty($_POST["e
       <input type="text" name="firstname" value="<?= $firstname ?>">
     </div>
     <div class="bloc-form">
-      <input type="email" name="firstname" value="<?= $email ?>">
+      <input type="email" name="email" value="<?= $email ?>">
     </div>
     <div class="bloc-form">
-      <input type="date" name="firstname" value="<?= $birthday ?>">
+      <input type="date" name="birthday" value="<?= $birthday ?>">
     </div>
     <div class="bloc-form">
-      <input type="text" name="firstname" value="<?= $country ?>">
+      <input type="text" name="country" value="<?= $country ?>">
     </div>
     <div class="bloc-form">
-      <input type="text" name="firstname" value="<?= $city ?>">
+      <input type="text" name="city" value="<?= $city ?>">
     </div>
     <button type="submit" class="btn-login">Modifier mon profil</button>
   </form>
